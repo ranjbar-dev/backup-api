@@ -1,0 +1,15 @@
+generate-config:
+	cp ./configs/config.example.yaml ./configs/config.yaml
+	
+generate-ssl:
+	openssl genrsa -out ./configs/ssl/server.key 2048
+	openssl req -new -subj "/C=IR/ST=Rafsanjan/L=Kerman/O=Behkame/CN=localhost" -key ./configs/ssl/server.key -out ./configs/ssl/server.csr
+	openssl x509 -req -days 365 -in ./configs/ssl/server.csr -signkey ./configs/ssl/server.key -out ./configs/ssl/server.crt
+	openssl x509 -in ./configs/ssl/server.crt -out ./configs/ssl/server.pem -outform PEM
+
+generate-swagger-docs:
+	docker exec engine-container swag init  --parseInternal --parseDepth 100 -d 'cmd/engine/,srv/api,types' -o ./.swagger/docs
+
+build:
+	go build .
+
