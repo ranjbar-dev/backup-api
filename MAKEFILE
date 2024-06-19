@@ -11,5 +11,5 @@ generate-swagger-docs:
 	swag init  --parseInternal --parseDepth 100 -o ./.swagger/docs
 
 build:
-	go build .
+	go build -o main .
 
