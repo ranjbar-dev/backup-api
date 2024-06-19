@@ -44,3 +44,10 @@ func (c *Config) WhitelistIp() []string {
 
 	return c.v.GetStringSlice("api.whitelist_ip")
 }
+
+// ========== backup ========== //
+
+func (c *Config) BackupLocation() string {
+
+	return c.v.GetString("backup.location")
+}

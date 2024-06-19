@@ -2,11 +2,9 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
 	"github.com/ranjbar-dev/backup-api/srv/api"
 )
@@ -27,13 +25,9 @@ func main() {
 	a.Start()
 
 	// wait for signal
-	signal := <-sigChan
-
-	fmt.Println(signal)
+	<-sigChan
 
 	// cancel ctx
 	cancel()
-
-	time.Sleep(1 * time.Second)
 
 }

@@ -36,6 +36,8 @@ func (a *Api) registerRoutes() {
 
 	// test //
 
+	a.hs.RegisterPostRoute("/store-backup", controller.StoreBackup)
+
 	a.hs.RegisterGetRoute("/test", controller.Test)
 
 }
