@@ -17,6 +17,17 @@ type StoreBackupRequest struct {
 	Project string                `form:"project"`
 }
 
+// @Summary       Store backup
+// @Description   Accept backup file and project name and store on server
+// @Tags          API
+// @Accept  multipart/form-data
+// @Param         project formData    string   true    "project name"
+// @Param         file    formData    file     true    "backup file"
+// @Produce       json
+// @Success       200        {object}  map[string]any
+// @Failure       400        {object}  ErrorResponse
+// @Failure       500        {object}  ErrorResponse
+// @Router        /store-backup [post]
 func (controller *Controller) StoreBackup(c *gin.Context) {
 
 	var req StoreBackupRequest

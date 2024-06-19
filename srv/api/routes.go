@@ -1,10 +1,10 @@
 package api
 
 import (
+	docs "github.com/ranjbar-dev/backup-api/.swagger/docs"
 	apicontroller "github.com/ranjbar-dev/backup-api/srv/api/controllers"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/swag/example/basic/docs"
 )
 
 func (a *Api) registerSwagger() {

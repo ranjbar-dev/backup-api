@@ -1,0 +1,45 @@
+definitions:
+  apicontroller.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /store-backup:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Accept backup file and project name and store on server
+      parameters:
+      - description: project name
+        in: formData
+        name: project
+        required: true
+        type: string
+      - description: backup file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/apicontroller.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/apicontroller.ErrorResponse'
+      summary: Store backup
+      tags:
+      - API
+swagger: "2.0"

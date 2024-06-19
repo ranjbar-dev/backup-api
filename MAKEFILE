@@ -8,7 +8,7 @@ generate-ssl:
 	openssl x509 -in ./configs/ssl/server.crt -out ./configs/ssl/server.pem -outform PEM
 
 generate-swagger-docs:
-	docker exec engine-container swag init  --parseInternal --parseDepth 100 -d 'cmd/engine/,srv/api,types' -o ./.swagger/docs
+	swag init  --parseInternal --parseDepth 100 -o ./.swagger/docs
 
 build:
 	go build .
